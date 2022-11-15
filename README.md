@@ -41,15 +41,19 @@ pip install undetected-chromedriver
 requirements:
 - npm (Node.js) or yarn
 
-to create new project execute:
+### First time only:
+
+to create new project move to fronent folder and then execute:
 ```
-npx create-react-app seo-content-tool --template typescript
+cd frontend
+npx create-react-app . --template typescript
 ```
 
-add this to package.json file:
+add this at bottom package.json file:
 
 ```
 {
+  ...
   "proxy": "http://localhost:5000"
 }
 ```
