@@ -43,10 +43,10 @@ requirements:
 
 ### First time only:
 
-to create new project move to fronent folder and then execute:
+to create new project move to frontend folder and then execute:
 ```
 cd frontend
-npx create-react-app . --template typescript
+yarn create react-app . --template typescript
 ```
 
 add this at bottom package.json file:
@@ -59,8 +59,9 @@ add this at bottom package.json file:
 ```
 
 ### Config tailwind
-on cmd execute
+on cmd go to frontend folder and execute
 ```
+cd frontend
 npm install -D tailwindcss postcss autoprefixer 
 npx tailwindcss init -p
 ```
