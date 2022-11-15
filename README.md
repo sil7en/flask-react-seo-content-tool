@@ -12,9 +12,8 @@ requirements:
 - Python
 - Google Chrome's last version
 
-First, create a new backend folder. Inside create venv:
+First, move to backend folder. Inside create a new venv:
 ```
-mkdir backend
 cd backend
 py -m venv venv
 ```
@@ -24,7 +23,7 @@ Then, activate venv on bash
 source venv/Scripts/activate
 ```
 
-and install follow libraries:
+with venv active install follow libraries:
 ```
 pip install Flask
 pip install flask-restful
