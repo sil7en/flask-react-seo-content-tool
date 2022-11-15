@@ -10,17 +10,24 @@ This mvp needs Google Chrome's last version available to work.
 ## For backend install
 requirements:
 - Python
+- Google Chrome's last version
 
 First, create a new backend folder. Inside create venv:
 ```
 mkdir backend
 cd backend
-pip venv venv
+py -m venv venv
 ```
 
-Then, activate venv and install follow libraries:
+Then, activate venv on bash
+```
+source venv/Scripts/activate
+```
+
+and install follow libraries:
 ```
 pip install Flask
+pip install flask-restful
 pip install selenium
 pip install webdriver_manager
 pip install nltk
@@ -33,7 +40,7 @@ pip install undetected-chromedriver
 
 ## For front end install
 requirements:
-- npm (Node.js)
+- npm (Node.js) or yarn
 
 to create new project execute:
 ```
