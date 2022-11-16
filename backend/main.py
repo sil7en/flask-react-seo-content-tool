@@ -4,6 +4,10 @@ from flask_restful import Resource, Api
 
 app = Flask(__name__)
 
+@app.route("/")
+def home():
+    return {'api': 'seo-content-tool'}
+
 @app.route("/keywords")
 def keywords():
     return {"keywords": ["keyword 1","keyword 2","keyword 3"]}
