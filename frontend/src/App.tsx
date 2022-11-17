@@ -17,16 +17,13 @@ function App() {
 
   return (
     <div>
-      <p className='font-bold text-3xl'>
-        Hola soy un párrafo estilizado con Tailwind
-      </p>
       {(typeof data === 'undefined') ? (
         <p>Loading...</p>
       ) : (
         <div>
           {data.map((e) => {
             return(
-              <span>{e}</span>
+              <p>{e}</p>
             )
           })}
         </div>
