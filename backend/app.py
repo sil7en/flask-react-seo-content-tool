@@ -6,8 +6,6 @@ from dotenv import load_dotenv
 # init dotenv to  use variables from .env file
 load_dotenv()
 
-keyword = 'vajilla'
-
 def appMain(keyword):
 
     # First step: execute flaskscraper_main
