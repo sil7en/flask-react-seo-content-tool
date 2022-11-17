@@ -100,5 +100,6 @@ def positionsWebscraper(arr):
         # Add textData to obj. Then add it to arr_return
         obj.update(textData)
         arr_return.append(obj)
-
+    
+    driver.close()
     return arr_return
