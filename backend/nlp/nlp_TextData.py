@@ -17,6 +17,8 @@ def nlp_TextData(data):
         nlpOneGrams_nsw = nlp_function_ngrams(nlpNoStopWords, 1)
         nlpBiGrams_nsw = nlp_function_ngrams(nlpNoStopWords, 2)
         nlpTriGrams_nsw = nlp_function_ngrams(nlpNoStopWords, 3)
+        nlpFourGrams_nsw = nlp_function_ngrams(nlpNoStopWords, 4)
+        nlpFiveGrams_nsw = nlp_function_ngrams(nlpNoStopWords, 5)
         nlpNer = nlp_function_ner(value)
         nlpNer_clean = nlp_function_cleanData(nlpNer)
         nlpOneGrams_ner = nlp_function_ngrams(nlpNer_clean, 1)
@@ -24,7 +26,7 @@ def nlp_TextData(data):
         nlpTriGrams_ner = nlp_function_ngrams(nlpNer_clean, 3)
 
         # function to make bow over all grams (no entities from ner)
-        arr_grams = [nlpBiGrams_nsw, nlpTriGrams_nsw]
+        arr_grams = [nlpBiGrams_nsw, nlpTriGrams_nsw, nlpFourGrams_nsw, nlpFiveGrams_nsw]
         arr_all_grams = []
         for grams in arr_grams:
             arr_all_grams.extend(grams)
