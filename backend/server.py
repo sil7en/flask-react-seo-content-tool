@@ -3,6 +3,7 @@ from flask import Flask
 from flask_restful import Resource, Api, reqparse, abort
 import os
 from dotenv import load_dotenv
+from app import appMain
 
 # init Flask
 app = Flask(__name__)
@@ -11,7 +12,7 @@ app = Flask(__name__)
 load_dotenv()
 
 # define project_path
-project_path = os.getenv('PATH_JSON_FOLDER')
+project_path = os.getenv('PATH_PROJECT_FOLDER')
 
 def load_json_data():
     global keywords_data
@@ -38,6 +39,11 @@ def home():
 @app.route("/keywords")
 def keywords():
     return keywords_data
+
+@app.route("/keywords/<keyword>")
+def keyword(keyword):
+    obj_return = appMain(keyword)
+    return obj_return    
 
 if __name__ == '__main__':
     app.run(debug=True)
