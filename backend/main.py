@@ -1,8 +1,35 @@
 import json
 from flask import Flask
-from flask_restful import Resource, Api
+from flask_restful import Resource, Api, reqparse, abort
+import os
+from dotenv import load_dotenv
 
+# init Flask
 app = Flask(__name__)
+
+# init dotenv to  use variables from .env file
+load_dotenv()
+
+# define project_path
+project_path = os.getenv('PATH_JSON_FOLDER')
+
+def load_json_data():
+    global keywords_data
+    global keywords
+    with open('data.json', 'r') as f:
+        keywords = json.load(f)
+        keywords_data = keywords
+
+load_json_data()
+
+def write_changes_to_file():
+    global data
+    data = {k: v for k, v in keywords.items()}
+    with open('data.json', 'w') as f:
+        json.dump(data, f)
+        
+
+write_changes_to_file()
 
 @app.route("/")
 def home():
@@ -10,7 +37,7 @@ def home():
 
 @app.route("/keywords")
 def keywords():
-    return {"keywords": ["keyword 1","keyword 2","keyword 3"]}
+    return keywords_data
 
 if __name__ == '__main__':
     app.run(debug=True)
