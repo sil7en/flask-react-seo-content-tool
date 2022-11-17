@@ -2,6 +2,11 @@ from urllib.parse import urlparse
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
+import os
+from dotenv import load_dotenv
+
+# init dotenv to  use variables from .env file
+load_dotenv()
 
 # Function to obtain top organic positions of a query, using Selenium webdriver
 def gooTopPositions(wd):
@@ -33,11 +38,10 @@ def gooTopPositions(wd):
             seo_description_container = position.find_element(By.CLASS_NAME, 'VwiC3b')
             seo_description = seo_description_container.find_element(By.TAG_NAME, 'span').text
         except:
-            seo_description = ''
-        
-        
+            seo_description = '' 
+
         # arr to exclude websites from top positions
-        arr_exclude = ['twitter.com', 'www.instagram.com', 'www.google.cl', 'www.google.com', 'play.google.com', 'www.oddschecker.com']
+        arr_exclude = os.getenv('ARR_SITES_EXCLUDE_FROM_SCRAPE').split(",")
 
         # Check data to append it to main arr_return
         if seo_title != '' and seo_link_parsed_hostname not in arr_exclude:
