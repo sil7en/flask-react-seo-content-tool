@@ -43,7 +43,7 @@ def keywords():
 @app.route("/keywords/<keyword>")
 def keyword(keyword):
     obj_return = appMain(keyword)
-    return obj_return    
+    return obj_return  
 
 if __name__ == '__main__':
     app.run(debug=True)

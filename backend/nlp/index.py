@@ -6,14 +6,19 @@ sys.path.append('../')
 from nlp.nlp_TextData import nlp_TextData
 from nlp.nlp_function_bow import nlp_function_bow
 from nlp.nlp_function_global_bow import nlp_function_global_bow
+import os
+from dotenv import load_dotenv
 
-json_folder_path = 'c:\\dev\\dev-projects\\seo-content-tool\\json_local\\'
+# init dotenv to  use variables from .env file
+load_dotenv()
+
+env_project_path = os.getenv('PATH_PROJECT_FOLDER')
 
 def nlpMain(keyword):
     # this function works based on .json file from topPositionTextData folder
 
     # var to store folder json's path
-    json_keyword_folder_path = f'{json_folder_path}{keyword}\\gsearch\\topPositionsTextData\\'
+    json_keyword_folder_path = f'{env_project_path}/JSON/{keyword}/gsearch/topPositionsTextData/'
     all_json_files = glob.glob(f'{json_keyword_folder_path}*.json')
 
     # order json_files by date
@@ -73,6 +78,8 @@ def nlpMain(keyword):
     
     # Function to get global bow from arr data_json['topPositionsNlpGrams']
     TextData_global_bow = nlp_function_global_bow(data_json['topPositionsNlpGrams'])
+
+    data_json.update({'TextData_global_bow': TextData_global_bow})
 
 
     return data_json

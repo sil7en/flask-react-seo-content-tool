@@ -24,5 +24,5 @@ def nlp_function_global_bow(arr):
         if value > 2:
             obj_return_final.update({key: value})
 
-    print(obj_return_final)
+    #print(obj_return_final)
     return obj_return_sorted

@@ -1,5 +1,5 @@
-from nlp.index import nlpMain
 from lib.flask_scraper import flaskscraper_main
+from lib.nlp_handler import nlp_handler
 import os
 from dotenv import load_dotenv
 
@@ -19,9 +19,11 @@ def appMain(keyword):
     env_googleurl = os.getenv('GOOGLE_URL')
 
     # call to flaskscraper_main()
+    # return true or false
     res_scraper = flaskscraper_main(keyword, env_googlegeo, env_googleurl, env_project_path)
+    
+    # call to nlp_handler()
+    # return true or false
+    nlp = nlp_handler(keyword, res_scraper)
 
-    # simple call to nlp index function
-    #nlpMain(keyword)
-
-    return res_scraper
+    return nlp

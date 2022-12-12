@@ -2,12 +2,17 @@ import json
 import glob
 import datetime
 from goo_positions_scraper.positions_webscraper import positionsWebscraper
+import os
+from dotenv import load_dotenv
 
-json_folder_path = 'c:\\dev\\dev-projects\\seo-content-tool\\json_local\\'
+# init dotenv to  use variables from .env file
+load_dotenv()
+
+env_project_path = os.getenv('PATH_PROJECT_FOLDER')
 
 def positionsScraper(keyword):
     # var to store folder json's path
-    json_keyword_folder_path = f'{json_folder_path}{keyword}\\gsearch\\top_positions\\'
+    json_keyword_folder_path = f'{env_project_path}/JSON/{keyword}/gsearch/top_positions/'
     all_json_files = glob.glob(f'{json_keyword_folder_path}*.json')
 
     # order json_files by date

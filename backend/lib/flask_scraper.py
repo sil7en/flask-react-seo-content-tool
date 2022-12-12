@@ -17,11 +17,11 @@ def flaskscraper_main(keyword: str, googleGeo: str, googleurl: str, project_path
     # boolean to decide next steps
     # If there is some then return it.
     if path_folder_keyword_isExist == True:
-        data_return = 'The data exist'
+        data_return = True
 
     # If data doesn't exist, scrape it.
     else:
-        data_return = "No data yet. The scraper already start."
+        data_return = False
 
         gooTrends = gootMain(keyword, googleGeo)
         gooSearch = gooMain(keyword, googleurl)
@@ -37,21 +37,7 @@ def flaskscraper_main(keyword: str, googleGeo: str, googleurl: str, project_path
 
     # obj to return data to Flask
     obj_return = {
-        'data': data_return
+        'dataExist': data_return
     }
 
     return obj_return
-
-
-
-#def examplefunction(keyword: str, googleGeo: str, googleurl: str):
-    #gooTrends = gootMain(keyword, googleGeo)
-    #gooSearch = gooMain(keyword, googleurl)
-    
-    # call to export_json function over gooSearch and gooTrends
-    #json_export(gooSearch, 'gsearch')
-    #json_export(gooTrends, 'gtrends')
-
-    # Var to store top position websites' text data
-    #top_positions_textData = positionsScraper(keyword)
-    #json_export(top_positions_textData, 'gsearch')
